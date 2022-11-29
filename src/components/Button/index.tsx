@@ -1,14 +1,15 @@
-import { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 import { ButtonContainer } from "./styles";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  title: string
+  title: string;
 }
 
-export function Button({ title, ...rest}: ButtonProps) {
+export function Button({ title, ...rest }: ButtonProps) {
   return (
-    <ButtonContainer {...rest}>
+    <ButtonContainer variant="red" {...rest}>
       {title}
     </ButtonContainer>
+      
   )
 }
