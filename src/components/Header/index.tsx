@@ -1,11 +1,13 @@
 import { MagnifyingGlass, ShoppingCart } from "phosphor-react";
-import { HeaderContainer, InputContainer, UserName, UserNameContainer } from "./styles";
+import { ButtonCart, HeaderContainer, InputContainer, InputWithIcon } from "./styles";
+
+import logoImg from "../../assets/logo.png"
 
 export function Header() {
   return (
     <HeaderContainer>
       <header>
-        <strong>Empire God of war</strong>
+        <img src={logoImg} alt="" />
 
         <ul>
           <li><a href="#">Jogos</a></li>
@@ -15,17 +17,29 @@ export function Header() {
         </ul>
 
         <InputContainer>
-          <MagnifyingGlass size={20}/>
-          <input type="text" placeholder="Pesquisar" />
-        </InputContainer>
+          <InputWithIcon>
+            <MagnifyingGlass size={20}/>
+            <input type="text" placeholder="Pesquisar" />
+          </InputWithIcon>
 
-        <UserNameContainer>
-          <UserName>Bem vindo, Lucas</UserName>
-          <button>
+          <ButtonCart>
             <ShoppingCart size={20}/>
             <span>1</span>
-          </button>
-        </UserNameContainer>
+        </ButtonCart>
+        </InputContainer>
+
+
+        {/* <UserNameContainer>
+
+          <UserName>
+            <span className="user">Lucas</span>
+            <UserJoined>
+              <span className="joined">Logado</span>
+              <span className="logout">Sair</span>
+            </UserJoined>
+          </UserName>
+
+        </UserNameContainer> */}
       </header>
     </HeaderContainer>
   )

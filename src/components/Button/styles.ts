@@ -1,7 +1,9 @@
 import styled, { css } from "styled-components";
 
 interface ButtonContainerProps {
-  variant?: "indigo" | "red"
+  variant?: "indigo" | "red";
+  background?: "none"
+  text?: "regular" | "lager"
 }
 
 export const ButtonContainer = styled.button<ButtonContainerProps>`
@@ -14,6 +16,9 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   font-weight: bold;
   color: ${({ theme }) => theme["zinc-200"]};
   transition: background 0.2s;
+
+  ${({ text }) => text === "lager" && css`font-size: 1.7rem`};
+  ${({ text }) => text === "regular" && css`font-size: 1.2rem`};
 
   ${({ theme, variant }) => variant === "red" && 
     css`
@@ -31,5 +36,16 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
         background: ${theme["indigo-700"]}
       }
     `  
+  }
+
+  ${({ theme, background }) => background === "none" && 
+    css`
+      background: none;
+      border: 2px solid ${theme["zinc-700"]};
+      &:hover {
+        background: ${theme["zinc-800"]};
+        transition: none;
+      }
+    `
   }
 `

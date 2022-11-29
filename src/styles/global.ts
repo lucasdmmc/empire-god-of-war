@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     font-size: 1.6rem;
     -webkit-font-smoothing: antialiased;
+    overflow: hidden;
   }
 
   body, input, textarea, button {
@@ -28,6 +29,17 @@ export const GlobalStyle = createGlobalStyle`
 
   button {
     cursor: pointer;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.3rem;
+  }
+  ::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme['zinc-800']};
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 2rem;
+    background: ${({ theme }) => theme['zinc-400']};
   }
 
 `

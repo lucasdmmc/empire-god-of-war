@@ -3,7 +3,11 @@ import styled, { keyframes } from "styled-components";
 export const HeaderContainer = styled.div`
   width: 100%;
   background: ${({ theme }) => theme["zinc-800"]};
-  padding: 4rem;
+  padding: 3.5rem;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 5;
 
   header {
     max-width: 144rem;
@@ -11,6 +15,10 @@ export const HeaderContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    img {
+      margin-top: 0.5rem;
+    }
 
     strong {
       font-size: 4rem;
@@ -63,7 +71,13 @@ export const InputContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
   position: relative;
+`
+
+export const InputWithIcon = styled.div`
+  display: flex;
+  align-items: center;
 
   input {
     width: 250px;
@@ -82,44 +96,38 @@ export const InputContainer = styled.div`
     position: absolute;
     left: 1rem;
     color: ${({ theme }) => theme["zinc-600"]};
-
   }
 `
+
 export const UserNameContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-
-  > button {
-    /* background: ${({ theme }) => theme["zinc-500"]}; */
-    border: none;
-    background: none;
-    border: 1px solid ${({ theme }) => theme["zinc-600"]};
-    padding: 0.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-    position: relative;
-
-    > span {
-      position: absolute;
-      top: -10px;
-      right: -5px;
-      width: 2rem;
-      padding: 0.2rem;
-      background: ${({ theme }) => theme["indigo-300"]};
-      border-radius: 50%;
-    }
-
-    > svg {
-      color: ${({ theme }) => theme["indigo-300"]}
-    }
-  }
 `
 
-export const UserName = styled.span`
-  color: ${({ theme }) => theme["zinc-300"]};
-  font-size: 1.8rem;
+export const ButtonCart = styled.button`
+  border: none;
+  background: none;
+  border: 1px solid ${({ theme }) => theme["zinc-600"]};
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  position: relative;
+
+  > span {
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    width: 2rem;
+    padding: 0.2rem;
+    background: ${({ theme }) => theme["indigo-300"]};
+    border-radius: 50%;
+  }
+
+  > svg {
+    color: ${({ theme }) => theme["indigo-300"]};
+  }
 `
