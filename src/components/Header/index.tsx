@@ -1,19 +1,48 @@
 import { MagnifyingGlass, ShoppingCart } from "phosphor-react";
 import { ButtonCart, HeaderContainer, InputContainer, InputWithIcon } from "./styles";
+import { Link } from "react-scroll"
 
 import logoImg from "../../assets/logo.png"
+import { useState } from "react";
 
 export function Header() {
-  return (
-    <HeaderContainer>
-      <header>
-        <img src={logoImg} alt="" />
+  const [click, setClick] = useState(true)
+  const CloseMenu = () => setClick(false)
 
-        <ul>
-          <li><a href="#">Jogos</a></li>
-          <li><a href="#">Personagens</a></li>
-          <li><a href="#">Sobre</a></li>
-          <li><a href="#">Contato</a></li>
+  return (
+    <HeaderContainer >
+      <header>
+        <Link to="/">
+          <img src={logoImg} alt="" />
+        </Link>
+
+        <ul className={click ? "menu-item active" : "menu-item"}>
+          <li className="nav-item" >
+            <Link 
+              to="home"
+              spy={true} 
+              smooth={true} 
+              offset={-200}
+              duration={1200}
+
+            >
+              Home
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link 
+              to="games" 
+              spy={true} 
+              smooth={true} 
+              offset={-200}
+              duration={800}
+            >
+              Jogos
+            </Link>
+          </li>
+          <li className="nav-item"><a href="#">Personagens</a></li>
+          <li className="nav-item"><a href="#">História</a></li>
+          <li className="nav-item"><a href="#">Contato</a></li>
         </ul>
 
         <InputContainer>

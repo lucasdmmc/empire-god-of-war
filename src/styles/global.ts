@@ -13,9 +13,12 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     width: 100%;
+    height: 100%;
     font-size: 1.6rem;
     -webkit-font-smoothing: antialiased;
-    overflow: hidden;
+    background: ${({ theme }) => theme["zinc-900"]};
+    scroll-behavior: smooth;
+
   }
 
   body, input, textarea, button {

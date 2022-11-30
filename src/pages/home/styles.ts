@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, {  keyframes } from "styled-components";
 
 const animationPrice = keyframes`
   0%, 100% {
@@ -10,39 +10,16 @@ const animationPrice = keyframes`
   }
 `
 
-const animationHome = keyframes`
-  0% {
-    transform: translateX(-100%);
-  }
-
-  100% {
-    transform: translateX(0)
-  }
-`
-
-const animationBuyProduct = keyframes`
-  0% {
-    transform: translateY(-90%);
-  }
-
-  100% {
-    transform: translateY(0)
-  }
-`
-  
 export const HomeContainer = styled.div`
   width: 100%;
-  height: 100vh;
-  background: ${({ theme }) => theme["zinc-900"]};
-  overflow-y: auto;
 `
 
 export const MainContainer = styled.main`
   width: 1440px;
   margin: 0 auto;
-  color: white;
+  color: ${({ theme }) => theme["zinc-300"]};
   padding-top: 3rem;
-  animation: ${animationHome} 1s ease-in-out;
+  overflow-x: hidden;
 
   > div, img:not(img) {
     width: 1000px;
@@ -64,7 +41,6 @@ export const BuyProduct = styled.div`
   border: 1px solid ${({ theme }) => theme["zinc-800"]};
   border-radius: 8px;
   padding: 6rem;
-  animation: ${animationBuyProduct} 1s ease-in-out;
 
   > strong {
     font-size: 3rem;
@@ -75,13 +51,13 @@ export const BuyProduct = styled.div`
   }
 
   button + button {
-    margin-top: 1rem;
+    margin-top: 1.2rem;
   }
 `
 
 export const Stars = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
 
   margin-bottom: 1.6rem;
@@ -97,7 +73,7 @@ export const Note = styled.div`
   border-radius: 4px;
 `
 
-export const InfoGames = styled.div`
+export const InfoGame = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;

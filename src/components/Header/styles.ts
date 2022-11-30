@@ -4,11 +4,11 @@ export const HeaderContainer = styled.div`
   width: 100%;
   background: ${({ theme }) => theme["zinc-800"]};
   padding: 3.5rem;
+  position: relative;
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 5;
-
+  z-index: 10;
   header {
     max-width: 144rem;
     margin: 0 auto;
@@ -38,31 +38,21 @@ export const HeaderContainer = styled.div`
       list-style: none;
     }
 
+    .nav-item .active {
+      border-bottom: 3px solid ${({ theme }) => theme["indigo-500"]};
+      color: ${({ theme }) => theme["zinc-400"]};
+      font-weight: bold;
+    }
+
+    .nav-item a:hover {
+      color: ${({ theme }) => theme["zinc-400"]};
+      font-weight: bold;
+    }
+
     a {
       font-size: 2rem;
       color: ${({ theme }) => theme["zinc-500"]};
-      display: inline-block;
-      border-top: 2px solid transparent;
-
-      &::after {
-        display: block;
-        content: "";
-        width: 0;
-        height: 3px;
-        background: ${({ theme }) => theme["indigo-600"]};
-        border-radius: 8px;
-        transition: width 0.5s;
-      }
-
-      &:hover::after,
-      &:focus::after  {
-        width: 100%;
-      }
-
-      &:focus, 
-      &:hover {
-        color: ${({ theme }) => theme["zinc-400"]};
-      }
+      cursor: pointer;
     }
   }
 `
