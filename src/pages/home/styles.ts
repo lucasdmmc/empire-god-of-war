@@ -12,10 +12,11 @@ const animationPrice = keyframes`
 
 export const HomeContainer = styled.div`
   width: 100%;
+  padding-bottom: 3rem;
 `
 
 export const MainContainer = styled.main`
-  width: 1440px;
+  max-width: 1440px;
   margin: 0 auto;
   color: ${({ theme }) => theme["zinc-300"]};
   padding-top: 3rem;
@@ -31,9 +32,14 @@ export const MainContainer = styled.main`
 `
 
 export const MainCover = styled.div`
-  min-width: 100%;
+  min-width: 1440px;
   display: flex;
   gap: 1rem;
+
+
+  > img {
+    border-radius: 8px;
+  }
 `
 
 export const BuyProduct = styled.div`

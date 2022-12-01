@@ -3,13 +3,19 @@ import styled from "styled-components";
 export const GameContainer = styled.div`
   width: 1440px;
   margin: 0 auto;
-  margin-top: 5rem;
+  padding-top: 3rem;
+  /* padding-bottom: 3rem; */
 
   img {
     width: 100%;
     height: 350px;
+    transition: filter 0.7s;
+    border-radius: 8px;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
   }
-  padding-bottom: 3rem;
 `
 
 export const BetterExperience = styled.div`
@@ -18,30 +24,11 @@ export const BetterExperience = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  padding-top: 1rem;
+  padding-top: 2rem;
   
-  > div {
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
-    strong {
-      color: ${({ theme }) => theme["zinc-400"]};
-      font-size: 3rem;
-    }
-
-    span {
-      font-size: 1.6rem;
-      color: ${({ theme }) => theme["zinc-400"]};
-      text-align: justify;
-    }
-  }
-
   img {
-    width: 500px;
-    height: 200px;
-    border-radius: 20px;
-    box-shadow: 0rem 0rem 1rem 0rem ${({ theme }) => theme["indigo-300"]};
+    width: 200px;
+    height: 40px;
   }
+
 `

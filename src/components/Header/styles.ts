@@ -9,6 +9,7 @@ export const HeaderContainer = styled.div`
   top: 0;
   left: 0;
   z-index: 10;
+
   header {
     max-width: 144rem;
     margin: 0 auto;
@@ -41,12 +42,12 @@ export const HeaderContainer = styled.div`
     .nav-item .active {
       border-bottom: 3px solid ${({ theme }) => theme["indigo-500"]};
       color: ${({ theme }) => theme["zinc-400"]};
-      font-weight: bold;
+      font-weight: 500;
     }
 
-    .nav-item a:hover {
+    a:hover {
       color: ${({ theme }) => theme["zinc-400"]};
-      font-weight: bold;
+      font-weight: 500;
     }
 
     a {

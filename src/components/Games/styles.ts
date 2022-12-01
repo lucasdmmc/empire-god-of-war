@@ -3,14 +3,9 @@ import styled from "styled-components";
 export const GamesContainer = styled.div`
   width: 100%;
   background: ${({ theme }) => theme["zinc-800"]};
-  border-radius: 8px;
-  padding: 2rem;
-
-  img {
-    width: 100%;
-    border-radius: 3px;
-    object-fit: 100%;
-  }
+  padding: 1.5rem;
+  border-radius: 4px;
+  margin-bottom: 3rem;
 `
 
 export const InfoCardGames = styled.div`

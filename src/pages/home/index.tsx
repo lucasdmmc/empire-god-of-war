@@ -19,11 +19,13 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 import { useEffect } from "react";
 import { Games } from "./components/Games";
+import { Characters } from "./components/Characters";
+import { History } from "./components/History";
 
 export function Home() {
 
   useEffect(() => {
-    Aos.init({  duration: 1500 })
+    Aos.init({  duration: 2000 })
   }, [])
 
   return (
@@ -79,7 +81,10 @@ export function Home() {
           </BuyProduct>
         </MainCover>
       </MainContainer>
-        <Games />
+
+      <Games />
+      <Characters />
+      <History />  
     </HomeContainer>
   )
 }

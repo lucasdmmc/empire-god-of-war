@@ -6,8 +6,7 @@ import logoImg from "../../assets/logo.png"
 import { useState } from "react";
 
 export function Header() {
-  const [click, setClick] = useState(true)
-  const CloseMenu = () => setClick(false)
+  const [click] = useState(true)
 
   return (
     <HeaderContainer >
@@ -21,10 +20,9 @@ export function Header() {
             <Link 
               to="home"
               spy={true} 
-              smooth={true} 
+              // smooth={true} 
               offset={-200}
-              duration={1200}
-
+              duration={50}
             >
               Home
             </Link>
@@ -34,15 +32,34 @@ export function Header() {
               to="games" 
               spy={true} 
               smooth={true} 
-              offset={-200}
-              duration={800}
+              offset={-150}
+              duration={700}
             >
               Jogos
             </Link>
           </li>
-          <li className="nav-item"><a href="#">Personagens</a></li>
-          <li className="nav-item"><a href="#">História</a></li>
-          <li className="nav-item"><a href="#">Contato</a></li>
+          <li className="nav-item">
+            <Link 
+              to="characters"
+              spy={true} 
+              smooth={true} 
+              offset={-100}
+              duration={500}
+            >
+              Personagens
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link 
+              to="history"
+              spy={true} 
+              smooth={true} 
+              offset={-100}
+              duration={500}
+            >  
+              História
+            </Link>
+          </li>
         </ul>
 
         <InputContainer>
