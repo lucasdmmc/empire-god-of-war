@@ -4,6 +4,7 @@ import { Link } from "react-scroll"
 
 import logoImg from "../../assets/logo.png"
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export function Header() {
   const [click] = useState(true)
@@ -64,14 +65,17 @@ export function Header() {
 
         <InputContainer>
           <InputWithIcon>
+
             <MagnifyingGlass size={20}/>
             <input type="text" placeholder="Pesquisar" />
           </InputWithIcon>
 
+        <NavLink to="/checkout">
           <ButtonCart>
             <ShoppingCart size={20}/>
             <span>1</span>
-        </ButtonCart>
+          </ButtonCart>
+        </NavLink>
         </InputContainer>
 
 

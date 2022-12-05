@@ -10,6 +10,7 @@ export const HeaderContainer = styled.div`
   left: 0;
   z-index: 10;
 
+  
   header {
     max-width: 144rem;
     margin: 0 auto;

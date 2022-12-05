@@ -11,7 +11,7 @@ interface GamesProps {
   price: number;
 }
 
-interface Games {
+ export interface Games {
   games: GamesProps
 }
 

@@ -71,7 +71,7 @@ export function Home() {
 
 
             <ButtonContainer variant="red" text="lager">
-              Comprar na pré-venda
+              Comprar na promoção
             </ButtonContainer>
 
             <ButtonContainer variant="red" background="none" text="lager">
