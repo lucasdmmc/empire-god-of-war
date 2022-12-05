@@ -1,21 +1,16 @@
-import { ShoppingCart } from "phosphor-react";
-import games from "../../data";
+import { IGames } from "../../contexts/GameContext";
+import { UseGames } from "../../hooks/UseGames";
 import { GamesContainer, InfoCardGames, InfoToBuyGame, Tags } from "./styles";
 
 interface GamesProps {
-  id: number;
-  tags: string[];
-  name: string;
-  description: string;
-  photo: string;
-  price: number;
+  games: IGames
 }
 
- export interface Games {
-  games: GamesProps
-}
+export function Games({ games }: GamesProps) {
+  
+  const { addGamesToCart } = UseGames()
+  console.log(addGamesToCart)
 
-export function Games({ games }: Games) {
   return (
     <GamesContainer>
       <InfoCardGames>
@@ -32,7 +27,7 @@ export function Games({ games }: Games) {
 
         <InfoToBuyGame>
           <span>R$ <strong>{games.price}</strong></span>
-          <button>Colocar no carrinho</button>
+          <button type="button" onClick={() => addGamesToCart(games)}>Colocar no carrinho</button>
         </InfoToBuyGame>
 
 

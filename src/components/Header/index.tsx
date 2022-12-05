@@ -5,9 +5,14 @@ import { Link } from "react-scroll"
 import logoImg from "../../assets/logo.png"
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { UseGames } from "../../hooks/UseGames";
 
 export function Header() {
   const [click] = useState(true)
+
+  const {cartGames} = UseGames()
+
+  const cartQuantity = cartGames.length
 
   return (
     <HeaderContainer >
@@ -73,7 +78,7 @@ export function Header() {
         <NavLink to="/checkout">
           <ButtonCart>
             <ShoppingCart size={20}/>
-            <span>1</span>
+            <span>{cartQuantity}</span>
           </ButtonCart>
         </NavLink>
         </InputContainer>

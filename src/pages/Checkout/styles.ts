@@ -110,7 +110,8 @@ export const CartGames = styled.div`
   border-top: 1px solid ${({ theme }) => theme["zinc-600"]};
 
   img {
-    width: 90px;
+    width: 100px;
+    height: 100px;
   }
 
   > div {
@@ -166,4 +167,72 @@ export const CheckoutContent = styled.div`
   box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.2);
 
   padding: 3rem 4rem;
+
+  h2 {
+    color: ${({ theme }) => theme["zinc-400"]};
+    padding-bottom: 2rem;
+  }
+
+  select {
+    width: 100%;
+    height: 3rem;
+    /* background: ${({ theme }) => theme["zinc-500"]}; */
+    background: none;;
+    outline: none;
+    color: ${({ theme }) => theme["zinc-500"]};
+    margin-bottom: 2rem;
+    option {
+      background: black;
+    }
+  }
+`
+
+export const Summary = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid ${({ theme }) => theme["zinc-800"]};
+  
+  h2 {
+    color: ${({ theme }) => theme["zinc-400"]};
+  }
+  
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      
+      strong {
+        color: ${({ theme }) => theme["zinc-400"]};
+        font-size: 2.5rem;
+      }
+  
+      span {
+        color: ${({ theme }) => theme["zinc-500"]};
+      }
+    }
+
+  }
+`
+
+export const Payment = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 2rem;
+
+  h2 {
+    margin-top: 1.6rem;
+    color: ${({ theme }) => theme["zinc-500"]};
+  }
+
+  > div {
+    display: flex;
+    gap: 1.6rem;
+  }
 `

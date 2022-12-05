@@ -1,10 +1,17 @@
+import { InputHTMLAttributes } from "react";
 import { InputContainer } from "./styles";
 
-export function Input() {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  type: string;
+  text: string;
+
+}
+
+export function Input({ type, text, ...rest }: InputProps) {
   return (
-    <InputContainer>
-      <input type="text" placeholder="" required/>
-      <span>E-mail</span>
+    <InputContainer {...rest}>
+      <input type={type} placeholder="" required/>
+      <span>{text}</span>
     </InputContainer>
   )
 }

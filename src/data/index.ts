@@ -33,7 +33,7 @@
     price: 34.9,
   },
   {
-    id: 4,
+    id: 5,
     tags: ["Aventura", "RPG Eletrônico"],
     name: "God of War II",
     description: "Kratos viaja até as Irmãs do Destino para mudar os acontecimentos de sua luta contra Zeus e convocar os Titãs do passado para travar uma guerra contra o Olimpo. Isso mostra o quão determinado o Fantasma de Esparta está para mudar o curso das coisas.",
@@ -41,7 +41,7 @@
     price: 59.9,
   },
   {
-    id: 5,
+    id: 6,
     tags: ["Aventura", "RPG Eletrônico"],
     name: "God of War III",
     description: "você será Kratos, um ex-guerreiro espartano que busca uma vingança sangrenta contra aqueles que o traíram. O cenário remete à mitologia grega e Kratos terá que enfrentar seres mitológicos mortais, resolvendo enigmas até ele destruir o Monte Olimpo.",
@@ -49,7 +49,7 @@
     price: 89.9,
   },
   {
-    id: 6,
+    id: 7,
     tags: ["Aventura", "RPG Eletrônico"],
     name: "God of War IV",
     description: "Alguns anos depois, Kratos passa a viver como um homem, fora da sombra dos deuses, Kratos deve se adaptar a terras desconhecidas, ameaças inesperadas e a uma segunda oportunidade de ser pai. Junto ao seu filho, Atreus",
@@ -57,12 +57,12 @@
     price: 139.9,
   },
   {
-    id: 7,
+    id: 8,
     tags: ["Aventura", "RPG Eletrônico"],
     name: "God of War: Ragnarök",
     description: "Em uma aventura ainda mais empolgante, Kratos e Atreus viajarão para cada canto dos Nove Reinos em busca de respostas, enquanto as tropas de Asgard se preparam para uma batalha que pode acabar com o mundo.",
     photo: "god-of-war-ragnarok.png",
-    price: 250.0,
+    price: 245.0,
   },
 ]
 
