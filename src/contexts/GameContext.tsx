@@ -15,7 +15,6 @@ interface GameContextData {
   removeCartGame: (gameId: number) => void;
   ifAlreadyExists: (gameId: number) => boolean;
   addGamesToCart: (games: IGames) => void;
-  onChangeGames: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 interface GameContextProviderProps {
@@ -38,24 +37,20 @@ export function GameContextProdivder({ children }: GameContextProviderProps) {
   }
 
   function removeCartGame(gameId: number) {
-    setCartGames(state => state.filter(game => game.id !== gameId))
+    setCartGames(cartGames.filter(game => game.id !== gameId))
   }
 
   function ifAlreadyExists(gameId: number) {
     return cartGames.some(game => game.id === gameId)
   }
 
-  function onChangeGames(event: ChangeEvent<HTMLTextAreaElement>) {
-    event.preventDefault()
-  }
   return (
     <GameContext.Provider value={{ 
       cartGames, 
       addGamesToCart, 
       totalPrice, 
       removeCartGame,
-      ifAlreadyExists,
-      onChangeGames
+      ifAlreadyExists
      }}>
       {children}
     </GameContext.Provider>

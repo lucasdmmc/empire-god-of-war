@@ -1,6 +1,6 @@
 import { IGames } from "../../contexts/GameContext";
 import { UseGames } from "../../hooks/UseGames";
-import { priceFormatter } from "../utils/FormatMoney";
+import { priceFormatter } from "../../utils/FormatMoney";
 import { GamesContainer, InfoCardGames, InfoToBuyGame, Tags } from "./styles";
 
 interface GamesProps {

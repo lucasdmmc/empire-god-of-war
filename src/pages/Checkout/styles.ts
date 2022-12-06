@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import * as AlertDialog from "@radix-ui/react-alert-dialog"
 
 export const CheckoutShoppingContainer = styled.div`
   width: 100%;
@@ -9,17 +10,6 @@ export const CheckoutShoppingContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  &::after {
-    content: "";
-    background: ${({ theme }) => theme["zinc-700"]};
-    position: absolute;
-    height: 100vh;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: -1;
-  }
 `
 
 export const CheckoutShopping = styled.div`
@@ -136,14 +126,15 @@ export const CartGames = styled.div`
     color: ${({ theme }) => theme["zinc-400"]}
   }
 
-  button {
-    border: none;
-    background: none;
+`
 
-    svg {
-      margin-right: 50px;
-      color: ${({ theme }) => theme["zinc-400"]}
-    }
+export const RemoveGame = styled.button`
+  border: none;
+  background: none;
+
+  svg {
+    margin-right: 50px;
+    color: ${({ theme }) => theme["zinc-400"]}
   }
 `
 
@@ -237,4 +228,70 @@ export const Payment = styled.form`
     display: flex;
     gap: 1.6rem;
   }
+`
+
+
+export const Overlay = styled(AlertDialog.Overlay)`
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+`
+
+export const Content = styled(AlertDialog.Content)`
+  width: 40rem;
+  border-radius: 6px;
+  padding: 2rem;
+
+  background: ${({ theme }) => theme["zinc-700"]};
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  strong {
+    color: ${({ theme }) => theme["zinc-400"]};
+  }
+`
+
+export const ButtonsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 3rem;
+`
+
+export const Cancel = styled(AlertDialog.Cancel)`
+  border: none;
+  background: ${({ theme }) => theme["zinc-300"]};
+  color: ${({ theme }) => theme["zinc-700"]};
+  border-radius: 4px;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background 0.4s, color 0.4s;
+
+  &:hover {
+    background: ${({ theme }) => theme["zinc-400"]};
+    color: ${({ theme }) => theme["zinc-600"]}
+  }
+
+`
+
+export const Action = styled(AlertDialog.Action)`
+  border: none;
+  background: ${({ theme }) => theme["zinc-300"]};
+  color: ${({ theme }) => theme["red-500"]};
+  border-radius: 4px;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: background 0.4s, color 0.4s;
+
+  &:hover {
+    background: ${({ theme }) => theme["zinc-400"]};
+    color: ${({ theme }) => theme["red-700"]}
+  }
+
 `

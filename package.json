@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@radix-ui/react-alert-dialog": "^1.0.2",
+    "@radix-ui/react-dialog": "^1.0.2",
     "aos": "^2.3.4",
     "keen-slider": "^6.8.5",
     "phosphor-react": "^1.4.1",

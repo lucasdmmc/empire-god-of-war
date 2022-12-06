@@ -1,13 +1,19 @@
 import {  ArrowLeft, ShoppingCart, WindowsLogo, X } from "phosphor-react";
 import { 
+  Action,
   ButtonCart, 
+  ButtonsContainer, 
+  Cancel, 
   CartGames,
   CartGamesContainer, 
   CheckoutContent, 
   CheckoutShopping, 
   CheckoutShoppingContainer, 
+  Content, 
+  Overlay, 
   Payment, 
   Platform, 
+  RemoveGame, 
   ShoppingCartContainer, 
   Summary
   } from "./styles";
@@ -15,12 +21,15 @@ import { Link } from "react-router-dom";
 import { Input } from "./components/Input";
 import { Button } from "./components/Button";
 import { UseGames } from "../../hooks/UseGames";
-import { priceFormatter } from "../../components/utils/FormatMoney";
-import { IGames } from "../../contexts/GameContext";
+import { priceFormatter } from "../../utils/FormatMoney";
 import { EmpityCart } from "../../components/EmpityCart";
+import * as AlertDialog  from "@radix-ui/react-alert-dialog";
+import { RemoveGamesModal } from "../../components/RemoveGamesModal";
+import { ComponentProps } from "react";
 
+type CheckoutProps = ComponentProps<typeof RemoveGame> 
 
-export function Checkout() {
+export function Checkout({ ...rest }: CheckoutProps) {
 
   const { cartGames, totalPrice, removeCartGame } = UseGames()
 
@@ -64,7 +73,38 @@ export function Checkout() {
                       <WindowsLogo size={20} weight="fill" />
                     </Platform>
                     <strong>{formatted.format(game.price)}</strong>
-                    <button type="button" onClick={() => removeCartGame(game.id)}><X size={20} /></button>
+                  
+                    <AlertDialog.Root>
+                      <AlertDialog.Trigger asChild>
+                        <RemoveGame {...rest} type="button">
+                          Remover
+                        </RemoveGame>
+                      </AlertDialog.Trigger>
+
+                      <AlertDialog.Portal>
+                        <Overlay />
+
+                        <Content>
+
+                          <AlertDialog.Title>
+                            <strong>Tem certeza que deseja remover o jogo do carrinho?</strong>
+                          </AlertDialog.Title>
+                        
+                        <ButtonsContainer>
+                          <Cancel>
+                            Cancelar
+                          </Cancel>
+                          <Action 
+                            type="button" 
+                            onClick={() => removeCartGame(game.id)}>
+                            Remover
+                          </Action>
+                        </ButtonsContainer>
+                        </Content>
+
+                      </AlertDialog.Portal>
+                    </AlertDialog.Root>
+
                   </CartGames>
                 ))}
 
