@@ -98,7 +98,11 @@ export const UserNameContainer = styled.div`
   gap: 1rem;
 `
 
-export const ButtonCart = styled.button`
+interface ButtonProps {
+
+}
+
+export const ButtonCart = styled.button<ButtonProps>`
   border: none;
   background: none;
   border: 1px solid ${({ theme }) => theme["zinc-600"]};

@@ -5,8 +5,8 @@ import { Games } from "../Games";
 export function CardGames() {
   return (
       <CardGamesContainer>
-        {games.map(games => (
-          <Games key={games.id} games={games} />
+        {games.map(game => (
+          <Games key={game.id} games={game} />
         ))}
       </CardGamesContainer>
   )

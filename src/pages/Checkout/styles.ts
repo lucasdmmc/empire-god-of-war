@@ -118,6 +118,8 @@ export const CartGames = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+
+    width: 25rem;
     
 
     strong {

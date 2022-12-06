@@ -1,5 +1,6 @@
 import { IGames } from "../../contexts/GameContext";
 import { UseGames } from "../../hooks/UseGames";
+import { priceFormatter } from "../utils/FormatMoney";
 import { GamesContainer, InfoCardGames, InfoToBuyGame, Tags } from "./styles";
 
 interface GamesProps {
@@ -8,12 +9,15 @@ interface GamesProps {
 
 export function Games({ games }: GamesProps) {
   
-  const { addGamesToCart } = UseGames()
-  console.log(addGamesToCart)
+  const { addGamesToCart, ifAlreadyExists } = UseGames()
+
+  const ifAlreadyExistsGame = ifAlreadyExists(games.id)
+
+  const formatted = priceFormatter
 
   return (
     <GamesContainer>
-      <InfoCardGames>
+      <InfoCardGames key={games.id}>
         <img src={`/public/games/${games.photo}`} alt="" />
 
         <strong>{games.name}</strong>
@@ -26,8 +30,23 @@ export function Games({ games }: GamesProps) {
         </Tags>
 
         <InfoToBuyGame>
-          <span>R$ <strong>{games.price}</strong></span>
-          <button type="button" onClick={() => addGamesToCart(games)}>Colocar no carrinho</button>
+          <strong>{formatted.format(games.price)}</strong>
+          
+          {ifAlreadyExistsGame ?
+            <button
+              disabled
+              type="button" 
+              onClick={() => addGamesToCart(games)}>
+              Colocar no carrinho
+           </button>
+          :
+            <button
+              type="button" 
+              onClick={() => addGamesToCart(games)}>
+              Colocar no carrinho
+            </button>
+          }
+
         </InfoToBuyGame>
 
 

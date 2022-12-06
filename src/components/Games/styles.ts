@@ -81,5 +81,16 @@ export const InfoToBuyGame = styled.div`
     &:hover {
       background: ${({ theme }) => theme["red-700"]};
     }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+      background: ${({ theme }) => theme["red-500"]};
+    }
+
+    &:not(:disabled) {
+      cursor: pointer;
+      opacity: 1;
+    }
   }
 `

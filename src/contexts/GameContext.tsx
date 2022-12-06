@@ -1,7 +1,7 @@
-import { createContext, ReactNode, useState } from "react";
+import { ChangeEvent, createContext, ReactNode, useState } from "react";
 
 export interface IGames {
-  id: string;
+  id: number;
   tags: string[];
   name: string;
   description: string;
@@ -12,8 +12,10 @@ export interface IGames {
 interface GameContextData {
   cartGames: IGames[]
   totalPrice: number
-  removeCartGame: (gameId: string) => void;
+  removeCartGame: (gameId: number) => void;
+  ifAlreadyExists: (gameId: number) => boolean;
   addGamesToCart: (games: IGames) => void;
+  onChangeGames: (event: ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 interface GameContextProviderProps {
@@ -24,6 +26,7 @@ export const GameContext = createContext({} as GameContextData)
 
 export function GameContextProdivder({ children }: GameContextProviderProps) {
   const [cartGames, setCartGames] = useState<IGames[]>([])
+  const [searchGames, setSearchGames] = useState("")
 
   const totalPrice = cartGames.reduce((total, games ) => {
     return total + games.price
@@ -34,11 +37,26 @@ export function GameContextProdivder({ children }: GameContextProviderProps) {
     setCartGames(state => [...state, games])
   }
 
-  function removeCartGame(gameId: string) {
+  function removeCartGame(gameId: number) {
     setCartGames(state => state.filter(game => game.id !== gameId))
   }
+
+  function ifAlreadyExists(gameId: number) {
+    return cartGames.some(game => game.id === gameId)
+  }
+
+  function onChangeGames(event: ChangeEvent<HTMLTextAreaElement>) {
+    event.preventDefault()
+  }
   return (
-    <GameContext.Provider value={{ cartGames, addGamesToCart, totalPrice, removeCartGame }}>
+    <GameContext.Provider value={{ 
+      cartGames, 
+      addGamesToCart, 
+      totalPrice, 
+      removeCartGame,
+      ifAlreadyExists,
+      onChangeGames
+     }}>
       {children}
     </GameContext.Provider>
   )

@@ -3,16 +3,22 @@ import { ButtonCart, HeaderContainer, InputContainer, InputWithIcon } from "./st
 import { Link } from "react-scroll"
 
 import logoImg from "../../assets/logo.png"
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { UseGames } from "../../hooks/UseGames";
 
 export function Header() {
+  const [searchForGames, setSearchForGames] = useState("")
+
   const [click] = useState(true)
 
   const {cartGames} = UseGames()
 
   const cartQuantity = cartGames.length
+
+  function handleSearchGames() {
+    setSearchForGames(searchForGames)
+  }
 
   return (
     <HeaderContainer >
@@ -71,30 +77,29 @@ export function Header() {
         <InputContainer>
           <InputWithIcon>
 
-            <MagnifyingGlass size={20}/>
-            <input type="text" placeholder="Pesquisar" />
+            <MagnifyingGlass onClick={handleSearchGames} size={20}/>
+            <input 
+              type="text"
+              placeholder="Pesquisar" 
+              onChange={(e) => setSearchForGames(e.target.value)} />
           </InputWithIcon>
 
-        <NavLink to="/checkout">
-          <ButtonCart>
-            <ShoppingCart size={20}/>
-            <span>{cartQuantity}</span>
-          </ButtonCart>
-        </NavLink>
+          {cartQuantity >= 1 ?
+            <NavLink to="/checkout">
+              <ButtonCart>
+                <ShoppingCart size={20}/>
+                <span>{cartQuantity}</span>
+              </ButtonCart>
+            </NavLink>
+          : 
+          <NavLink to="/checkout">
+            <ButtonCart>
+              <ShoppingCart size={20}/>
+            </ButtonCart>
+          </NavLink>
+          }
+
         </InputContainer>
-
-
-        {/* <UserNameContainer>
-
-          <UserName>
-            <span className="user">Lucas</span>
-            <UserJoined>
-              <span className="joined">Logado</span>
-              <span className="logout">Sair</span>
-            </UserJoined>
-          </UserName>
-
-        </UserNameContainer> */}
       </header>
     </HeaderContainer>
   )
