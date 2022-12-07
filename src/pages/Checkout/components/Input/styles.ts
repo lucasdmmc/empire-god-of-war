@@ -1,16 +1,5 @@
 import styled, { keyframes } from "styled-components";
 
-
-const animationInput = keyframes`
-  0% {
-    transform: translateX(10px);
-  }
-
-  100% {
-    transform: translateY(-7px);
-  }
-`
-
 export const InputContainer = styled.div`
 
   position: relative;

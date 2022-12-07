@@ -1,5 +1,5 @@
 import { IGames } from "../../contexts/GameContext";
-import { UseGames } from "../../hooks/UseGames";
+import { useGames } from "../../hooks/useGames";
 import { priceFormatter } from "../../utils/FormatMoney";
 import { GamesContainer, InfoCardGames, InfoToBuyGame, Tags } from "./styles";
 
@@ -9,7 +9,7 @@ interface GamesProps {
 
 export function Games({ games }: GamesProps) {
   
-  const { addGamesToCart, ifAlreadyExists } = UseGames()
+  const { addGamesToCart, ifAlreadyExists } = useGames()
 
   const ifAlreadyExistsGame = ifAlreadyExists(games.id)
 

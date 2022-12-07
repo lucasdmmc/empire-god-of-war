@@ -1,5 +1,5 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
-import { ButtonContainer } from "./styles";
+import { ButtonHTMLAttributes } from "react";
+import { StyledButton } from "./styles";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
@@ -7,9 +7,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export function Button({ title, ...rest }: ButtonProps) {
   return (
-    <ButtonContainer variant="red" {...rest}>
+    <StyledButton variant="red" {...rest}>
       {title}
-    </ButtonContainer>
+    </StyledButton>
       
   )
 }

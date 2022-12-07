@@ -9,7 +9,7 @@ import {
   Stars 
 } from "./styles";
 import { Header } from "../../components/Header";
-import { ButtonContainer } from "../../components/Button/styles";
+import { StyledButton } from "../../components/Button/styles";
 import { Star } from "phosphor-react";
 
 import imageGOW5 from "../../assets/god-of-war-5-capa.png"
@@ -70,13 +70,13 @@ export function Home() {
             </ProductPrice>
 
 
-            <ButtonContainer variant="red" text="lager">
+            <StyledButton variant="red" text="lager">
               Comprar na promoção
-            </ButtonContainer>
+            </StyledButton>
 
-            <ButtonContainer variant="red" background="none" text="lager">
+            <StyledButton variant="red" background="none" text="lager">
               Adicionar no carrinho
-            </ButtonContainer>
+            </StyledButton>
 
           </BuyProduct>
         </MainCover>

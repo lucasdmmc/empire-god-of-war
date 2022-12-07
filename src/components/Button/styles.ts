@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components";
 
 interface ButtonContainerProps {
-  variant?: "indigo" | "red";
+  variant?: "indigo" | "red" | "zinc";
   background?: "none"
   text?: "regular" | "lager"
 }
 
-export const ButtonContainer = styled.button<ButtonContainerProps>`
+export const StyledButton = styled.button<ButtonContainerProps>`
   width: 100%;
   height: 56px;
   border: none;
@@ -17,8 +17,8 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
   color: ${({ theme }) => theme["zinc-200"]};
   transition: background 0.2s;
 
-  ${({ text }) => text === "lager" && css`font-size: 1.7rem`};
-  ${({ text }) => text === "regular" && css`font-size: 1.2rem`};
+  ${({ text }) => text === "lager" && css`font-size: 1.8rem`};
+  ${({ text }) => text === "regular" && css`font-size: 1.4rem`};
 
   ${({ theme, variant }) => variant === "red" && 
     css`
@@ -34,6 +34,16 @@ export const ButtonContainer = styled.button<ButtonContainerProps>`
       background: ${theme["indigo-500"]};
       &:hover {
         background: ${theme["indigo-700"]}
+      }
+    `  
+  }
+
+  ${({ theme, variant }) => variant === "zinc" && 
+    css`
+      background: ${theme["zinc-800"]};
+      color: ${theme["zinc-400"]};
+      &:hover {
+        background: ${theme["zinc-700"]}
       }
     `  
   }

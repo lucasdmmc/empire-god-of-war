@@ -7,7 +7,7 @@ export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />}></Route>
-      <Route path="/checkout" element={<Checkout />}></Route>
+      <Route path="checkout" element={<Checkout />}></Route>
     </Routes>
   )
 }

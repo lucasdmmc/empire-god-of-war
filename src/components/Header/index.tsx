@@ -1,23 +1,36 @@
 import { MagnifyingGlass, ShoppingCart } from "phosphor-react";
-import { ButtonCart, HeaderContainer, InputContainer, InputWithIcon } from "./styles";
+import { HeaderContainer, InputContainer, InputWithIcon } from "./styles";
 import { Link } from "react-scroll"
 
 import logoImg from "../../assets/logo.png"
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { UseGames } from "../../hooks/UseGames";
+import { useRef, useState } from "react";
+import { useGames } from "../../hooks/useGames";
+import { CartButton } from "../CartButton";
+import { useForm } from "react-hook-form";
+import * as z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+
+const searchGamesSchema = z.object({
+  query: z.string(),
+})
+
+type SearchGamesInput = z.infer<typeof searchGamesSchema>
 
 export function Header() {
-  const [searchForGames, setSearchForGames] = useState("")
+  const { register, handleSubmit} = useForm<SearchGamesInput>({
+    resolver: zodResolver(searchGamesSchema)
+  })
 
   const [click] = useState(true)
 
-  const {cartGames} = UseGames()
+  const {cartGames, searchGames} = useGames()
 
   const cartQuantity = cartGames.length
 
-  function handleSearchGames() {
-    setSearchForGames(searchForGames)
+  let inputRef = useRef()
+
+  function handleSearchGames(data: SearchGamesInput) {
+    console.log(data)
   }
 
   return (
@@ -75,31 +88,25 @@ export function Header() {
         </ul>
 
         <InputContainer>
-          <InputWithIcon>
-
-            <MagnifyingGlass onClick={handleSearchGames} size={20}/>
+          <InputWithIcon onSubmit={handleSubmit(handleSearchGames)}>
+            <button type="submit">
+              <MagnifyingGlass size={20}/>
+            </button>
             <input 
               type="text"
-              placeholder="Pesquisar" 
-              onChange={(e) => setSearchForGames(e.target.value)} />
+              placeholder="Pesquisar"
+              {...register("query")}
+            />
           </InputWithIcon>
 
-          {cartQuantity >= 1 ?
-            <NavLink to="/checkout">
-              <ButtonCart>
-                <ShoppingCart size={20}/>
-                <span>{cartQuantity}</span>
-              </ButtonCart>
-            </NavLink>
+          { 
+            cartQuantity >= 1 ? 
+            <CartButton quantity={cartQuantity}/>
           : 
-          <NavLink to="/checkout">
-            <ButtonCart>
-              <ShoppingCart size={20}/>
-            </ButtonCart>
-          </NavLink>
+            <CartButton />
           }
-
         </InputContainer>
+        
       </header>
     </HeaderContainer>
   )
