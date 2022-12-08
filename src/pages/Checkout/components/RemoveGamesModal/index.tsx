@@ -7,28 +7,26 @@ export function RemoveGamesModal(){
 
   return (
     <>
+      <Overlay />
       {cartGames.map(game => (
-        <>
-          <Overlay />
-          <Content>
+        <Content>
+          <AlertDialog.Title>
+            <strong>Tem certeza que deseja remover jogo do carrinho?</strong>
+          </AlertDialog.Title>
 
-            <AlertDialog.Title>
-              <strong>Tem certeza que deseja remover jogo do carrinho?</strong>
-            </AlertDialog.Title>
-
-            <ButtonsContainer>
-              <Cancel>
-                Cancelar
-              </Cancel>
+          <ButtonsContainer>
+            <Cancel>
+              Cancelar
+            </Cancel>
               <Action
+                key={game.id}
                 type="button"
                 onClick={() => removeCartGame(game.id)}>
                 Remover
               </Action>
-            </ButtonsContainer>
-          </Content>
-        </>
+          </ButtonsContainer>
+        </Content>
       ))}
-    </>
+  </>
   )
 }

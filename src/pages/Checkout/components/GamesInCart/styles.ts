@@ -8,8 +8,6 @@ export const GamesInCartContainer = styled.div`
   padding: 3rem 4rem;
   box-shadow: -10px 10px 40px rgba(0, 0, 0, 0.3);
 
-  border: 1px solid white;
-
   display: flex;
   flex-direction: column;
   margin-bottom: auto;

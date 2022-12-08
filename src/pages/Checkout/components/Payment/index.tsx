@@ -1,60 +1,45 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { StyledButton } from "../../../../components/Button/styles";
 import { Input } from "../Input";
 import { PaymentContainer } from "./styles";
-import * as z from "zod"
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
-const paymentFormSchema = z.object({
-  accountNumber: z.number(),
-  ownerName: z.string(),
-  expirationDate: z.number(),
-  printedCode: z.number()
-})
-
-type PaymentFormInputs = z.infer<typeof paymentFormSchema>
 
 export function Payment() {
-  const { register, handleSubmit } = useForm<PaymentFormInputs>({
-    resolver: zodResolver(paymentFormSchema)
-  })
 
-  function handlePayGames(data: PaymentFormInputs) {
-    console.log(data)
-  }
-
+  const [cpf, setCpf] = useState("")
+  
   return (
-    <PaymentContainer onSubmit={handleSubmit(handlePayGames)}>
+    <PaymentContainer >
       <h2>Pagamento</h2>
-      <Input 
-        type="number"
-        text="Número da conta"
-        required
-        {...register("accountNumber", { valueAsNumber: true })}
+
+        <Input 
+          mask="9999 9999 9999 9999"
+          type={"text"} 
+          text={"Numero do cartão"} 
         />
-      <Input 
-        type="text"
-        text="Nome no cartão"
-        required
-        {...register("ownerName")}
+        <Input 
+          mask=""
+          type={""} 
+          text={"Nome no cartão"} 
         />
       <div>
         <Input 
-          type="number"
-          text="Data de válidade"
-          required
-          {...register("expirationDate", { valueAsNumber: true })}
-          />
+          mask="99/99"
+          type={""} 
+          text={"Data de Validade"} 
+        />
         <Input 
-          type="number"
-          text="CVC"
-          required
-          {...register("printedCode", { valueAsNumber: true })}
-          />
+          mask="999"
+          type={""} 
+          text={"CVC"} 
+        />
       </div>
-      <StyledButton type="submit" variant="zinc" text="regular">
-        Finalizar Compra
-      </StyledButton>
+
+      <Link to="/success">
+        <StyledButton type="button" variant="red" text="regular">
+          Finalizar Compra
+        </StyledButton>
+      </Link>
     </PaymentContainer>
   )
 }

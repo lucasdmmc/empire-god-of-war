@@ -1,38 +1,18 @@
 import { MagnifyingGlass, ShoppingCart } from "phosphor-react";
 import { HeaderContainer, InputContainer, InputWithIcon } from "./styles";
 import { Link } from "react-scroll"
-
 import logoImg from "../../assets/logo.png"
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useGames } from "../../hooks/useGames";
 import { CartButton } from "../CartButton";
-import { useForm } from "react-hook-form";
-import * as z from "zod"
-import { zodResolver } from "@hookform/resolvers/zod"
-
-const searchGamesSchema = z.object({
-  query: z.string(),
-})
-
-type SearchGamesInput = z.infer<typeof searchGamesSchema>
 
 export function Header() {
-  const { register, handleSubmit} = useForm<SearchGamesInput>({
-    resolver: zodResolver(searchGamesSchema)
-  })
 
   const [click] = useState(true)
 
-  const {cartGames, searchGames} = useGames()
+  const {cartGames} = useGames()
 
   const cartQuantity = cartGames.length
-
-  let inputRef = useRef()
-
-  function handleSearchGames(data: SearchGamesInput) {
-    console.log(data)
-  }
-
   return (
     <HeaderContainer >
       <header>
@@ -87,25 +67,13 @@ export function Header() {
           </li>
         </ul>
 
-        <InputContainer>
-          <InputWithIcon onSubmit={handleSubmit(handleSearchGames)}>
-            <button type="submit">
-              <MagnifyingGlass size={20}/>
-            </button>
-            <input 
-              type="text"
-              placeholder="Pesquisar"
-              {...register("query")}
-            />
-          </InputWithIcon>
 
-          { 
-            cartQuantity >= 1 ? 
-            <CartButton quantity={cartQuantity}/>
-          : 
-            <CartButton />
-          }
-        </InputContainer>
+        { 
+          cartQuantity >= 1 ? 
+          <CartButton quantity={cartQuantity}/>
+        : 
+          <CartButton />
+        }
         
       </header>
     </HeaderContainer>

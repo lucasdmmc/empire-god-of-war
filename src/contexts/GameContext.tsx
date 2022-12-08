@@ -15,7 +15,7 @@ interface GameContextData {
   removeCartGame: (gameId: number) => void;
   ifAlreadyExists: (gameId: number) => boolean;
   addGamesToCart: (games: IGames) => void;
-  searchGames: (query?: string) => void;
+  cartClear: () => void;
 }
 
 interface GameContextProviderProps {
@@ -35,37 +35,31 @@ export function GameContextProdivder({ children }: GameContextProviderProps) {
     }
 
   })
-  const [search, setSearch] = useState("")
 
   const totalPrice = cartGames.reduce((total, games ) => {
     return total + games.price
   }, 0)
-
-  async function searchGames(query?: string) {
-    const url = new URL("http://localhost:5173")
-
-    if(query) {
-      url.searchParams.append("q", query)
-    }
-
-  }
 
   function addGamesToCart(games: IGames) {
     setCartGames(state => [...state, games])
   }
 
   function removeCartGame(gameId: number) {
-    setCartGames(cartGames.filter(game => game.id !== gameId))
+    setCartGames(state => state.filter(game => game.id !== gameId))
+
   }
 
   function ifAlreadyExists(gameId: number) {
     return cartGames.some(game => game.id === gameId)
   }
 
+  function cartClear() {
+    setCartGames([])
+  }
+
   useEffect(() => {
     localStorage.setItem("@:god-of-war", JSON.stringify(cartGames))
-    searchGames()
-  }, [search, cartGames])
+  }, [cartGames])
 
   return (
     <GameContext.Provider value={{ 
@@ -74,7 +68,7 @@ export function GameContextProdivder({ children }: GameContextProviderProps) {
       totalPrice, 
       removeCartGame,
       ifAlreadyExists,
-      searchGames
+      cartClear,
      }}>
       {children}
     </GameContext.Provider>

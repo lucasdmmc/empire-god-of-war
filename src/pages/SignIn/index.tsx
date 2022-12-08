@@ -3,12 +3,29 @@ import { Lock, EnvelopeSimple } from "phosphor-react"
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
+import * as z from "zod"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { StyledButton } from "../../components/Button/styles";
+import { api } from "../../lib/axios";
+import { useGames } from "../../hooks/useGames";
+
+const signInSchema = z.object({
+  email: z.string().min(5).max(200),
+  password: z.string().min(8).max(16)
+})
+
+type SignInInputs = z.infer<typeof signInSchema>
 
 export function SignIn() {
+  const { register, handleSubmit } = useForm<SignInInputs>({
+    resolver: zodResolver(signInSchema)
+  })
+
   return (
     <SignInContainer>
     <FormContainer>
-      <Form>
+      <Form >
         <h1>Empire God of War</h1>
 
         <div>
@@ -23,17 +40,21 @@ export function SignIn() {
         type="text"
         placeholder="E-mail"
         icon={<EnvelopeSimple size={20}/>}
+        {...register("email")}
       />
 
       <Input 
         type="text"
         placeholder="Senha"
         icon={<Lock size={20}/>}
+        {...register("password")}
       />
 
       </InputsContainer>
        
-      <Button title="Entrar"/>
+      <StyledButton type="submit" variant="red">
+        Entrar
+      </StyledButton>
 
       <SingUp>
         <span>Ainda não tem uma conta?</span>

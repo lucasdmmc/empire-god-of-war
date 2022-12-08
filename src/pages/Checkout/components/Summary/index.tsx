@@ -11,7 +11,7 @@ export function Summary() {
     <SummaryContainer>
       <h2>Resumo</h2>
       <div>
-        <h2>{cartQuantity} Jogos</h2>
+        <h2>{cartQuantity} {cartQuantity === 1 ? 'Jogo' : 'Jogos '}</h2>
         <section>
           <strong>Total</strong>
           <span>{formatted.format(totalPrice)}</span>

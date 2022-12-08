@@ -2,7 +2,7 @@ import { InputHTMLAttributes, ReactNode } from "react";
 import { InputContainer } from "./styles";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  icon: ReactNode
+  icon?: ReactNode
 }
 
 export function Input({ icon, ...rest }: InputProps) {

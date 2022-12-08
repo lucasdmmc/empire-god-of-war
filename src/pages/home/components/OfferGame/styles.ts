@@ -1,4 +1,4 @@
-import styled, {  keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const animationPrice = keyframes`
   0%, 100% {
@@ -10,19 +10,12 @@ const animationPrice = keyframes`
   }
 `
 
-export const HomeContainer = styled.div`
-  width: 100%;
-  padding-bottom: 3rem;
-  `
-
-export const MainContainer = styled.main`
+export const OfferGameContainer = styled.div`
   max-width: 1440px;
   margin: 0 auto;
   color: ${({ theme }) => theme["zinc-300"]};
   padding-top: 3rem;
   overflow-x: hidden;
-  border: 1px solid red;
-
 
   > div, img:not(img) {
     width: 1000px;
@@ -32,7 +25,6 @@ export const MainContainer = styled.main`
     border-radius: 10px;
   }
 `
-
 export const MainCover = styled.div`
   min-width: 1440px;
   display: flex;
